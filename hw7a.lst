@@ -1,0 +1,41 @@
+
+asm85,  version 1.0f
+(c) 2010, M. D. Wagh
+
+                    
+                    ; This is just a test 8085 assembly program.
+                    ; It DIVIDES two 8-bit numbers specified by the user within the program.
+                    ; It places the result in register H, AND the quotient in Register L.
+                    ;
+                    ; CAUTION: Program considers that the Divident is Equal or Larger than the Divisor.
+                    ;
+                    ; CAUTION: IF DIVISOR IS 0H, THEN PROGRAM SHOULD SET BOTH H AND L TO 0H AND ABORT.
+                    ;
+                    ;************** write : AARON C. DEDITCH ******************************************
+                    ;
+                    	boot	equ	0
+                    	org	100h
+                    ;
+0100   3EFC         INIT:	MVI	A, 0FCH ; Initialize:	<A> <- Divident
+0102   062A         	MVI	B, 02AH ;		<B> <- Divisor
+0104   CA1001       	JZ	DONE	; Jump to Finish if B = 0
+0107   90           	SUB	B
+0108   0C           DIVL:	INR	C
+0109   90           	SUB	B	; Division Loop
+010A   D20801       	JNC	DIVL	; Check If A is now the Remainder
+010D   80           FNLZ:	ADD	B	
+010E   61           	MOV	H, C	; Finalize:	<H> <- Quotient
+010F   6F           	MOV	L, A	;		<L> <- Remainder
+                    ;
+0110   C30000       DONE:	jmp	boot
+                    	end
+
+
+      Symbol Table
+boot         0000 (0)
+divl         0108 (264)
+done         0110 (272)
+fnlz         010D (269)
+init         0100 (256)
+
+The file hw7a.asm has no syntax errors
