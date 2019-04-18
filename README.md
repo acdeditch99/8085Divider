@@ -1,6 +1,6 @@
 # 8085Divider
 
-This was part of a HomeWork Assignment, so ignore the non-pertaining pages on the PDFs.
+This was part of a Homework Assignment, so ignore the non-pertaining pages on the PDFs.
 
 'hw7a.asm' is a short implementation of an unsigned 8-bit divider program on 8085 using only successive subtractions.
 Due to some clever use of flags and the subtraction instruction, I was able avoid explicit checks for 0s in the main loop.
